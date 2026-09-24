@@ -1,0 +1,52 @@
+{
+  "best_epoch": 2,
+  "best_val_loss": 3.8741705627441405,
+  "epochs_run": 2,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 2.6447427535057066,
+      "val_loss": 3.9537939081192017,
+      "seconds": 39.6
+    },
+    {
+      "epoch": 2,
+      "train_loss": 2.530876384496689,
+      "val_loss": 3.8741705627441405,
+      "seconds": 1.1
+    }
+  ],
+  "train_minutes": 0.7,
+  "val_accuracy_last_step": 0.3345,
+  "val_balanced_accuracy_last_step": 0.2092034599702546,
+  "causality_max_abs_diff": 3.546476364135742e-06,
+  "n_train": 16000,
+  "n_val": 4000,
+  "diag_val_objects": 4000,
+  "data": {
+    "store_dir": "data/processed/plasticc_full",
+    "n_objects": 20000,
+    "n_train": 16000,
+    "n_val": 4000,
+    "n_observations": 2600970,
+    "n_train_observations": 2081033,
+    "train_class_counts": {
+      "6": 10,
+      "15": 70,
+      "16": 454,
+      "42": 4602,
+      "52": 288,
+      "53": 9,
+      "62": 786,
+      "64": 1,
+      "65": 423,
+      "67": 208,
+      "88": 496,
+      "90": 7588,
+      "92": 920,
+      "95": 145
+    },
+    "train_tde": 70,
+    "objects_from_original_training_set": 34
+  }
+}

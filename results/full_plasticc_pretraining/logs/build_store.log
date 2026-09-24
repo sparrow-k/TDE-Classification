@@ -1,0 +1,65 @@
+train set: 7,848 objects, 1,421,705 rows
+plasticc_test_lightcurves_01.csv.gz: 10,855,958 rows, 32,926 objects, 32,738 kept
+plasticc_test_lightcurves_02.csv.gz: 44,281,695 rows, 345,997 objects, 344,700 kept
+plasticc_test_lightcurves_03.csv.gz: 44,271,312 rows, 345,997 objects, 344,702 kept
+plasticc_test_lightcurves_04.csv.gz: 44,304,969 rows, 345,997 objects, 344,685 kept
+plasticc_test_lightcurves_05.csv.gz: 44,278,664 rows, 345,997 objects, 344,667 kept
+plasticc_test_lightcurves_06.csv.gz: 44,273,088 rows, 345,996 objects, 344,704 kept
+plasticc_test_lightcurves_07.csv.gz: 44,269,257 rows, 345,996 objects, 344,664 kept
+plasticc_test_lightcurves_08.csv.gz: 44,285,107 rows, 345,996 objects, 344,763 kept
+plasticc_test_lightcurves_09.csv.gz: 44,282,427 rows, 345,996 objects, 344,677 kept
+plasticc_test_lightcurves_10.csv.gz: 44,282,019 rows, 345,996 objects, 344,735 kept
+plasticc_test_lightcurves_11.csv.gz: 44,268,608 rows, 345,996 objects, 344,768 kept
+{
+  "rows": 453360006,
+  "objects": 3487651,
+  "objects_by_source": {
+    "test": 3479803,
+    "train": 7848
+  },
+  "class_counts": {
+    "SNIa": 1662144,
+    "SNII": 1001343,
+    "RRL": 197394,
+    "SNIbc": 175578,
+    "AGN": 101794,
+    "EB": 97496,
+    "M-dwarf": 94475,
+    "SNIax": 63847,
+    "SNIa-91bg": 40401,
+    "SLSN-I": 35957,
+    "TDE": 14050,
+    "Mira": 1483,
+    "microlens": 1454,
+    "KN": 235
+  },
+  "test_objects_in_metadata_in_14_classes": 3479803,
+  "test_objects_excluded_non_training_class": {
+    "991": 533,
+    "992": 1702,
+    "993": 9680,
+    "994": 1172
+  },
+  "test_metadata_objects_without_light_curve": 0,
+  "test_light_curve_objects_seen": 3492890,
+  "columns": {
+    "mjd": "float64",
+    "flux": "float32",
+    "flux_err": "float32",
+    "band": "int8"
+  },
+  "build_seconds": 510,
+  "test_light_curve_files": [
+    "plasticc_test_lightcurves_01.csv.gz",
+    "plasticc_test_lightcurves_02.csv.gz",
+    "plasticc_test_lightcurves_03.csv.gz",
+    "plasticc_test_lightcurves_04.csv.gz",
+    "plasticc_test_lightcurves_05.csv.gz",
+    "plasticc_test_lightcurves_06.csv.gz",
+    "plasticc_test_lightcurves_07.csv.gz",
+    "plasticc_test_lightcurves_08.csv.gz",
+    "plasticc_test_lightcurves_09.csv.gz",
+    "plasticc_test_lightcurves_10.csv.gz",
+    "plasticc_test_lightcurves_11.csv.gz"
+  ]
+}

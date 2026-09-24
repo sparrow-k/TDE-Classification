@@ -1,0 +1,93 @@
+# ---------------------------------------------------------------- data
+# Only the datasets the pipeline actually uses are tracked, so the code runs out of the box.
+data/*
+
+# Kaggle MALLORN copy: the labeled training split is used ...
+!data/mallorn-astronomical-classification-challenge (1)/
+# ... its unlabeled test split and submission template are not used
+data/mallorn-astronomical-classification-challenge (1)/test_log.csv
+data/mallorn-astronomical-classification-challenge (1)/sample_submission.csv
+data/mallorn-astronomical-classification-challenge (1)/split_*/test_full_lightcurves.csv
+
+# PLAsTiCC training set (used for pre-training)
+!data/plasticc_train_lightcurves.csv/
+!data/plasticc_train_metadata.csv/
+
+# Still ignored: data/MALLORN_public_01_10/ (unused second MALLORN copy)
+#                data/processed/ (parquet caches, rebuilt automatically on first run)
+
+# ---------------------------------------------------------------- outputs
+# Only the runs that fine-tuning, the demo and the presentation figures depend on are tracked.
+outputs/*
+!outputs/pretrain/
+outputs/pretrain/*
+!outputs/pretrain/20260913-015036_pretrain_plasticc_seed42/
+!outputs/cv/
+outputs/cv/*
+!outputs/cv/20260913-015131_stage1_cv_all_modes/
+!outputs/runs/
+outputs/runs/*
+!outputs/runs/20260913-001258_stage0_mallorn_gru_seed42/
+
+# the single final held-out test evaluation (Stage 2) - results, metrics and model checkpoints
+!outputs/final_test/
+outputs/final_test/*
+!outputs/final_test/20260916-172737_final_test/
+
+# ---------------------------------------------------------------- presentation media
+# Videos stay local. The two decks that embed them are ~70-76 MB each, so they stay local too;
+# the lightweight decks (EXTRA_SLIDES_DRAFT.pptx, final_additions.pptx) are tracked.
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.wmv
+*.m4v
+PRESENTATION DEMO/Dynamic Classification of Tidal Disruption Events.pptx
+PRESENTATION DEMO/PRESENTATION_DEMO.pptx
+
+# ---------------------------------------------------------------- editors and environments
+.idea/
+.vscode/
+vscode/
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# ---------------------------------------------------------------- caches, local and secret files
+__pycache__/
+*.py[cod]
+.DS_Store
+~$*
+*.tmp
+.env
+*.env
+secrets.json
+*.pem
+*.key
+
+# ---------------------------------------------------------------- LaTeX build leftovers (REPORT/)
+# The .tex source, the compiled .pdf and the figures are tracked; the intermediates are not.
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.out
+*.synctex.gz
+*.toc
+*.xdv
+REPORT/*.log
+
+# ---------------------------------------------------------------- local-only (kept on this machine)
+# Working material that is not part of the published repository.
+PRESENTATION DEMO/
+docs/
+REPORT/
+# every Markdown file except the top-level README.md and the demo's own short one
+*.md
+!/README.md
+!/demo/README.md

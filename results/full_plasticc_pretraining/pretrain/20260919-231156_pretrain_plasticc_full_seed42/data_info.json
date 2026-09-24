@@ -1,0 +1,26 @@
+{
+  "store_dir": "data/processed/plasticc_full",
+  "n_objects": 3487651,
+  "n_train": 2790121,
+  "n_val": 697530,
+  "n_observations": 453360006,
+  "n_train_observations": 362718640,
+  "train_class_counts": {
+    "6": 1164,
+    "15": 11240,
+    "16": 77997,
+    "42": 801074,
+    "52": 51077,
+    "53": 1187,
+    "62": 140463,
+    "64": 188,
+    "65": 75580,
+    "67": 32321,
+    "88": 81435,
+    "90": 1329715,
+    "92": 157915,
+    "95": 28765
+  },
+  "train_tde": 11240,
+  "objects_from_original_training_set": 7848
+}

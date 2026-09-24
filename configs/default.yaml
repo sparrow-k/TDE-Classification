@@ -1,0 +1,102 @@
+# Stage 0 configuration: GRU trained from scratch on the labeled MALLORN (Kaggle) training set.
+seed: 42
+run_name: stage0_mallorn_gru
+output_dir: outputs/runs
+
+data:
+  mallorn_dir: "data/mallorn-astronomical-classification-challenge (1)"
+  processed_dir: data/processed
+  flux_scale: 1.0     # features use arcsinh(flux / flux_scale); fixed global constant, never per-object
+  n_folds: 5          # test = 1/5 of objects, val = 1/5 of the remainder (grouped + stratified)
+  max_objects: null   # stratified subset for quick runs (null = all objects)
+
+model:
+  hidden_size: 64
+  num_layers: 2
+  dropout: 0.1
+
+train:
+  device: cuda
+  epochs: 30
+  batch_size: 64
+  lr: 0.001
+  weight_decay: 0.0001
+  grad_clip: 1.0
+  pos_weight: auto    # auto = n_negative / n_positive in the training split
+
+eval:
+  # Cutoffs in days relative to each object's estimated peak time; "full" (all observations) is always added.
+  cutoffs_days: [-50, -20, -10, 0, 20, 50, 100]
+  peak_bands: [g, r, i]
+  peak_min_snr: 3.0
+  # Best epoch = highest mean validation PR-AUC over these cutoffs (early-time performance matters most).
+  select_cutoffs_days: [-20, -10, 0, 20]
+
+# ---------------------------------------------------------------- Stage 1
+plasticc:
+  lc_path: data/plasticc_train_lightcurves.csv/plasticc_train_lightcurves.csv
+  meta_path: data/plasticc_train_metadata.csv/plasticc_train_metadata.csv
+  # PLAsTiCC FLUXCAL (zero-point 27.5) -> MALLORN microJansky (zero-point 23.9): 10^(0.4*3.6) = 27.54.
+  # Confirmed empirically from SN Ia peak fluxes at matched redshift (DECISIONS D15).
+  flux_scale: 27.54
+  max_objects: null
+
+# python pretrain_plasticc.py : per-step 14-class pre-training on PLAsTiCC
+pretrain:
+  run_name: pretrain_plasticc
+  output_dir: outputs/pretrain
+  val_folds: 5        # 1/5 of PLAsTiCC objects held out for early stopping
+  epochs: 100         # maximum; early stopping on validation loss
+  patience: 10
+  batch_size: 64
+  lr: 0.001
+  weight_decay: 0.0001
+
+# python run_cv.py : cross-validated scratch / frozen / finetune comparison on MALLORN (test set excluded)
+cv:
+  output_dir: outputs/cv
+  split_seed: 42      # defines the locked test set (identical to Stage 0) and the CV folds
+  n_folds: 5
+  inner_val_folds: 5  # 1/5 of each training portion is used for early stopping
+  seeds: [0, 1, 2]
+  epochs: 100         # maximum; early stopping on validation loss
+  patience: 10
+  batch_size: 64
+  weight_decay: 0.0001
+  lr:
+    scratch: 0.001
+    frozen: 0.001     # only the new head is trained
+    finetune: 0.0003  # lower LR so pre-trained encoder weights are adjusted, not overwritten
+  pretrained_model: null  # outputs/pretrain/<run>/model.pt (or pass --pretrained)
+
+# python run_final_test.py : Stage 2, the SINGLE final evaluation on the locked test set.
+# Fixed before the evaluation was run; nothing here may be changed after seeing test numbers.
+final_test:
+  output_dir: outputs/final_test
+  modes: [frozen, scratch]   # frozen = primary model (DECISIONS D20); scratch = control
+  seeds: [0, 1, 2]           # seed 0 is the declared final model; the others measure training variability
+  primary_mode: frozen
+  primary_seed: 0
+  bootstrap: 1000            # resamples for the PR-AUC confidence interval
+  # thresholds are taken from DEV data only: the cross-validation out-of-fold predictions below
+  threshold_source: outputs/cv/20260913-015131_stage1_cv_all_modes/oof_predictions.csv
+  pretrained_model: outputs/pretrain/20260913-015036_pretrain_plasticc_seed42/model.pt
+
+# Overrides applied with --smoke (run_experiment.py, pretrain_plasticc.py, run_cv.py)
+smoke:
+  run_name: smoke
+  data:
+    max_objects: 400
+  model:
+    hidden_size: 32
+  train:
+    epochs: 3
+  plasticc:
+    max_objects: 800
+  pretrain:
+    run_name: smoke_pretrain
+    epochs: 2
+  cv:
+    seeds: [0]
+    n_folds: 3
+    epochs: 2

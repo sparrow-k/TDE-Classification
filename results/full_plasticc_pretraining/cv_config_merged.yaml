@@ -1,0 +1,98 @@
+seed: 42
+run_name: stage0_mallorn_gru
+output_dir: outputs/runs
+data:
+  mallorn_dir: data/mallorn-astronomical-classification-challenge (1)
+  processed_dir: data/processed
+  flux_scale: 1.0
+  n_folds: 5
+  max_objects: null
+model:
+  hidden_size: 64
+  num_layers: 2
+  dropout: 0.1
+train:
+  device: cuda
+  epochs: 30
+  batch_size: 64
+  lr: 0.001
+  weight_decay: 0.0001
+  grad_clip: 1.0
+  pos_weight: auto
+eval:
+  cutoffs_days:
+  - -50
+  - -20
+  - -10
+  - 0
+  - 20
+  - 50
+  - 100
+  peak_bands:
+  - g
+  - r
+  - i
+  peak_min_snr: 3.0
+  select_cutoffs_days:
+  - -20
+  - -10
+  - 0
+  - 20
+plasticc:
+  lc_path: data/plasticc_train_lightcurves.csv/plasticc_train_lightcurves.csv
+  meta_path: data/plasticc_train_metadata.csv/plasticc_train_metadata.csv
+  flux_scale: 27.54
+  max_objects: null
+pretrain:
+  run_name: pretrain_plasticc_full
+  output_dir: results/full_plasticc_pretraining/pretrain
+  val_folds: 5
+  epochs: 100
+  patience: 10
+  batch_size: 64
+  lr: 0.001
+  weight_decay: 0.0001
+cv:
+  output_dir: results/full_plasticc_pretraining/cv
+  split_seed: 42
+  n_folds: 5
+  inner_val_folds: 5
+  seeds:
+  - 0
+  - 1
+  - 2
+  epochs: 100
+  patience: 10
+  batch_size: 64
+  weight_decay: 0.0001
+  lr:
+    scratch: 0.001
+    frozen: 0.001
+    finetune: 0.0003
+  pretrained_model: null
+final_test:
+  output_dir: outputs/final_test
+  modes:
+  - frozen
+  - scratch
+  seeds:
+  - 0
+  - 1
+  - 2
+  primary_mode: frozen
+  primary_seed: 0
+  bootstrap: 1000
+  threshold_source: outputs/cv/20260913-015131_stage1_cv_all_modes/oof_predictions.csv
+  pretrained_model: outputs/pretrain/20260913-015036_pretrain_plasticc_seed42/model.pt
+experiment:
+  name: full_plasticc_pretraining
+  results_dir: results/full_plasticc_pretraining
+  store_dir: data/processed/plasticc_full
+  test_meta_path: data/new data/plasticc_test_metadata.csv.gz
+  test_lc_glob: data/new data/plasticc_test_lightcurves_*.csv.gz
+  n_test_lc_files: 11
+  baseline_pretrain: outputs/pretrain/20260913-015036_pretrain_plasticc_seed42/model.pt
+  baseline_pretrain_dir: outputs/pretrain/20260913-015036_pretrain_plasticc_seed42
+  baseline_cv: outputs/cv/20260913-015131_stage1_cv_all_modes
+  num_workers: 6
+  diag_val_objects: 100000

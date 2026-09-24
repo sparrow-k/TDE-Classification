@@ -1,0 +1,40 @@
+seed: 42
+run_name: stage0_mallorn_gru
+output_dir: outputs/runs
+data:
+  mallorn_dir: data/mallorn-astronomical-classification-challenge (1)
+  processed_dir: data/processed
+  flux_scale: 1.0
+  n_folds: 5
+  max_objects: null
+model:
+  hidden_size: 64
+  num_layers: 2
+  dropout: 0.1
+train:
+  device: cuda
+  epochs: 30
+  batch_size: 64
+  lr: 0.001
+  weight_decay: 0.0001
+  grad_clip: 1.0
+  pos_weight: auto
+eval:
+  cutoffs_days:
+  - -50
+  - -20
+  - -10
+  - 0
+  - 20
+  - 50
+  - 100
+  peak_bands:
+  - g
+  - r
+  - i
+  peak_min_snr: 3.0
+  select_cutoffs_days:
+  - -20
+  - -10
+  - 0
+  - 20

@@ -1,0 +1,26 @@
+{
+  "store_dir": "data/processed/plasticc_full",
+  "n_objects": 20000,
+  "n_train": 16000,
+  "n_val": 4000,
+  "n_observations": 2600970,
+  "n_train_observations": 2081033,
+  "train_class_counts": {
+    "6": 10,
+    "15": 70,
+    "16": 454,
+    "42": 4602,
+    "52": 288,
+    "53": 9,
+    "62": 786,
+    "64": 1,
+    "65": 423,
+    "67": 208,
+    "88": 496,
+    "90": 7588,
+    "92": 920,
+    "95": 145
+  },
+  "train_tde": 70,
+  "objects_from_original_training_set": 34
+}

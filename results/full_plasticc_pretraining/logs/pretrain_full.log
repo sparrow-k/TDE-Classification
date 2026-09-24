@@ -1,0 +1,29 @@
+Run dir: results/full_plasticc_pretraining/pretrain\20260919-231156_pretrain_plasticc_full_seed42  device: cuda
+split in 447s
+train: 2,790,121 objects (11,240 TDE) | val: 697,530 | observations: 453,360,006
+epoch   1 | train loss 1.6527 | val loss 1.3688 | 213s | best
+epoch   2 | train loss 1.4375 | val loss 1.4102 | 174s
+epoch   3 | train loss 1.3877 | val loss 1.3072 | 176s | best
+epoch   4 | train loss 1.3588 | val loss 1.3456 | 176s
+epoch   5 | train loss 1.3530 | val loss 1.3240 | 177s
+epoch   6 | train loss 1.3307 | val loss 1.3753 | 176s
+epoch   7 | train loss 1.3450 | val loss 1.2413 | 178s | best
+epoch   8 | train loss 1.3198 | val loss 1.3287 | 178s
+epoch   9 | train loss 1.3203 | val loss 1.3127 | 177s
+epoch  10 | train loss 1.3129 | val loss 1.3242 | 178s
+epoch  11 | train loss 1.3024 | val loss 1.2404 | 177s | best
+epoch  12 | train loss 1.3020 | val loss 1.2882 | 177s
+epoch  13 | train loss 1.2993 | val loss 1.2530 | 176s
+epoch  14 | train loss 1.2940 | val loss 1.2608 | 173s
+epoch  15 | train loss 1.2983 | val loss 1.3210 | 176s
+epoch  16 | train loss 1.2846 | val loss 1.3589 | 175s
+epoch  17 | train loss 1.2826 | val loss 1.3893 | 175s
+epoch  18 | train loss 1.2759 | val loss 1.2369 | 175s | best
+epoch  19 | train loss 1.2783 | val loss 1.2908 | 176s
+epoch  20 | train loss 1.2726 | val loss 1.3142 | 178s
+epoch  21 | train loss 1.2817 | val loss 1.3326 | 174s
+epoch  22 | train loss 1.2800 | val loss 1.3182 | 177s
+epoch  23 | train loss 1.2786 | val loss 1.2280 | 177s | best
+epoch  24 | train loss 1.2924 | val loss 1.1955 | 178s | best
+epoch  25 | train loss 1.2653 | val loss 1.3447 | 174s
+epoch  26 | train loss 1.2711 | val loss 1.2609 | 175s

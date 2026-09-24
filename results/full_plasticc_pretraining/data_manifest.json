@@ -1,0 +1,159 @@
+{
+  "rows": 453360006,
+  "objects": 3487651,
+  "objects_by_source": {
+    "test": 3479803,
+    "train": 7848
+  },
+  "class_counts": {
+    "SNIa": 1662144,
+    "SNII": 1001343,
+    "RRL": 197394,
+    "SNIbc": 175578,
+    "AGN": 101794,
+    "EB": 97496,
+    "M-dwarf": 94475,
+    "SNIax": 63847,
+    "SNIa-91bg": 40401,
+    "SLSN-I": 35957,
+    "TDE": 14050,
+    "Mira": 1483,
+    "microlens": 1454,
+    "KN": 235
+  },
+  "test_objects_in_metadata_in_14_classes": 3479803,
+  "test_objects_excluded_non_training_class": {
+    "991": 533,
+    "992": 1702,
+    "993": 9680,
+    "994": 1172
+  },
+  "test_metadata_objects_without_light_curve": 0,
+  "test_light_curve_objects_seen": 3492890,
+  "files": [
+    {
+      "file": "plasticc_train_lightcurves.csv",
+      "rows": 1421705,
+      "objects_kept": 7848
+    },
+    {
+      "file": "plasticc_test_lightcurves_01.csv.gz",
+      "rows": 10855958,
+      "rows_kept": 10793258,
+      "rows_nan_dropped": 0,
+      "rows_excluded_class": 62700,
+      "objects_in_file": 32926,
+      "objects_kept": 32738
+    },
+    {
+      "file": "plasticc_test_lightcurves_02.csv.gz",
+      "rows": 44281695,
+      "rows_kept": 44115284,
+      "rows_nan_dropped": 0,
+      "rows_excluded_class": 166411,
+      "objects_in_file": 345997,
+      "objects_kept": 344700
+    },
+    {
+      "file": "plasticc_test_lightcurves_03.csv.gz",
+      "rows": 44271312,
+      "rows_kept": 44105448,
+      "rows_nan_dropped": 0,
+      "rows_excluded_class": 165864,
+      "objects_in_file": 345997,
+      "objects_kept": 344702
+    },
+    {
+      "file": "plasticc_test_lightcurves_04.csv.gz",
+      "rows": 44304969,
+      "rows_kept": 44136999,
+      "rows_nan_dropped": 0,
+      "rows_excluded_class": 167970,
+      "objects_in_file": 345997,
+      "objects_kept": 344685
+    },
+    {
+      "file": "plasticc_test_lightcurves_05.csv.gz",
+      "rows": 44278664,
+      "rows_kept": 44108235,
+      "rows_nan_dropped": 0,
+      "rows_excluded_class": 170429,
+      "objects_in_file": 345997,
+      "objects_kept": 344667
+    },
+    {
+      "file": "plasticc_test_lightcurves_06.csv.gz",
+      "rows": 44273088,
+      "rows_kept": 44107451,
+      "rows_nan_dropped": 0,
+      "rows_excluded_class": 165637,
+      "objects_in_file": 345996,
+      "objects_kept": 344704
+    },
+    {
+      "file": "plasticc_test_lightcurves_07.csv.gz",
+      "rows": 44269257,
+      "rows_kept": 44098565,
+      "rows_nan_dropped": 0,
+      "rows_excluded_class": 170692,
+      "objects_in_file": 345996,
+      "objects_kept": 344664
+    },
+    {
+      "file": "plasticc_test_lightcurves_08.csv.gz",
+      "rows": 44285107,
+      "rows_kept": 44127321,
+      "rows_nan_dropped": 0,
+      "rows_excluded_class": 157786,
+      "objects_in_file": 345996,
+      "objects_kept": 344763
+    },
+    {
+      "file": "plasticc_test_lightcurves_09.csv.gz",
+      "rows": 44282427,
+      "rows_kept": 44112845,
+      "rows_nan_dropped": 0,
+      "rows_excluded_class": 169582,
+      "objects_in_file": 345996,
+      "objects_kept": 344677
+    },
+    {
+      "file": "plasticc_test_lightcurves_10.csv.gz",
+      "rows": 44282019,
+      "rows_kept": 44121713,
+      "rows_nan_dropped": 0,
+      "rows_excluded_class": 160306,
+      "objects_in_file": 345996,
+      "objects_kept": 344735
+    },
+    {
+      "file": "plasticc_test_lightcurves_11.csv.gz",
+      "rows": 44268608,
+      "rows_kept": 44111182,
+      "rows_nan_dropped": 0,
+      "rows_excluded_class": 157426,
+      "objects_in_file": 345996,
+      "objects_kept": 344768
+    }
+  ],
+  "columns": {
+    "mjd": "float64",
+    "flux": "float32",
+    "flux_err": "float32",
+    "band": "int8"
+  },
+  "build_seconds": 510,
+  "test_light_curve_files": [
+    "plasticc_test_lightcurves_01.csv.gz",
+    "plasticc_test_lightcurves_02.csv.gz",
+    "plasticc_test_lightcurves_03.csv.gz",
+    "plasticc_test_lightcurves_04.csv.gz",
+    "plasticc_test_lightcurves_05.csv.gz",
+    "plasticc_test_lightcurves_06.csv.gz",
+    "plasticc_test_lightcurves_07.csv.gz",
+    "plasticc_test_lightcurves_08.csv.gz",
+    "plasticc_test_lightcurves_09.csv.gz",
+    "plasticc_test_lightcurves_10.csv.gz",
+    "plasticc_test_lightcurves_11.csv.gz"
+  ]
+}

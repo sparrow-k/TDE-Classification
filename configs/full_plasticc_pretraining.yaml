@@ -1,0 +1,31 @@
+# NEW post-completion experiment: pre-train on the FULL PLAsTiCC release, then repeat the same MALLORN CV.
+#
+# This file only lists what differs from configs/default.yaml; everything else (model, pre-training
+# hyper-parameters, seed, MALLORN split, CV protocol, cutoffs) is inherited unchanged so the comparison with
+# the original pre-training is fair. Loaded by pretrain_plasticc_full.py and run_cv_full_plasticc.py.
+# The original experiments never read this file.
+base: configs/default.yaml
+
+experiment:
+  name: full_plasticc_pretraining
+  results_dir: results/full_plasticc_pretraining
+  # full PLAsTiCC release = the original training set + the unblinded test set, as one memory-mapped store
+  store_dir: data/processed/plasticc_full
+  test_meta_path: "data/new data/plasticc_test_metadata.csv.gz"
+  test_lc_glob: "data/new data/plasticc_test_lightcurves_*.csv.gz"
+  n_test_lc_files: 11
+  # the original (baseline) run this experiment is compared against
+  baseline_pretrain: outputs/pretrain/20260913-015036_pretrain_plasticc_seed42/model.pt
+  baseline_pretrain_dir: outputs/pretrain/20260913-015036_pretrain_plasticc_seed42
+  baseline_cv: outputs/cv/20260913-015131_stage1_cv_all_modes
+  # engineering only (no effect on the model): data-loading workers, and how many PLAsTiCC validation
+  # objects the per-cutoff TDE diagnostic uses (the full validation set is ~700k objects)
+  num_workers: 6
+  diag_val_objects: 100000
+
+pretrain:
+  run_name: pretrain_plasticc_full
+  output_dir: results/full_plasticc_pretraining/pretrain
+
+cv:
+  output_dir: results/full_plasticc_pretraining/cv

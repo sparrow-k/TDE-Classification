@@ -1,0 +1,52 @@
+{
+  "source": "MALLORN Kaggle labelled training set (simulated ZTF-based light curves)",
+  "split": "development set only - these objects are part of the 2,434 objects the final model was trained on. The 609 locked test objects are NOT used as demo examples, so the demo can never be mistaken for, or contaminate, the scientific evaluation.",
+  "units": {
+    "time": "MJD (days)",
+    "flux": "difference-imaging flux (can be negative)",
+    "flux_err": "1-sigma flux uncertainty",
+    "band": "LSST filter: u g r i z y"
+  },
+  "examples": [
+    {
+      "file": "tde_clear.csv",
+      "true_class": "TDE",
+      "description": "TDE: slow, long-lived blue flare. The model becomes confident as the slow decline appears.",
+      "source_object_id": "harad_tirith_mithren",
+      "n_observations": 172,
+      "span_days": 2318.2
+    },
+    {
+      "file": "agn_variable.csv",
+      "true_class": "AGN",
+      "description": "AGN: irregular flickering. Rejected within the first few observations.",
+      "source_object_id": "amlug_loss_ang",
+      "n_observations": 109,
+      "span_days": 2573.0
+    },
+    {
+      "file": "supernova_ia.csv",
+      "true_class": "SN Ia",
+      "description": "Type Ia supernova: the score rises while the flare brightens, then falls once the fast decline is seen.",
+      "source_object_id": "aras_ryn_manadh",
+      "n_observations": 183,
+      "span_days": 2295.1
+    },
+    {
+      "file": "supernova_iin_hard.csv",
+      "true_class": "SN IIn",
+      "description": "Type IIn supernova: slow and luminous, so it stays TDE-like - the project's typical false alarm.",
+      "source_object_id": "agarwaen_cund_rhosc",
+      "n_observations": 132,
+      "span_days": 2349.1
+    },
+    {
+      "file": "tde_difficult.csv",
+      "true_class": "TDE",
+      "description": "TDE the model is unsure about: it ends near the 0.5 threshold - an honest failure case.",
+      "source_object_id": "amon_imloth_luin",
+      "n_observations": 119,
+      "span_days": 1888.3
+    }
+  ]
+}
